@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template2.xhtml">
+	
+		<ui:define name="tituloPrincipal">Lista de eventos</ui:define>
+		<ui:define name="tituloSecundario">Lista de casamentos registrados.</ui:define>
+		<ui:define name="conteudo">
+		
+			<p:dataTable value="#{cadastroCasamentoBean.listarCasamento()}" var="casamento">
+			
+				<p:column headerText="Noivos">
+					<h:outputText value="#{casamento.noivos}" />
+				</p:column>
+			
+				<p:column headerText="Local do evento:">
+					<h:outputText value="#{casamento.localDoEvento}" />
+				</p:column>
+				
+				<p:column headerText="Local da cerimonia:">
+					<h:outputText value="#{casamento.localDaCerimonia}" />
+				</p:column>
+				
+				<p:column headerText="Data e hora:">
+					<h:outputText value="#{casamento.data}" />
+				</p:column>
+				
+				<p:column headerText="Telefone:">
+					<h:outputText value="#{casamento.telefone}" />
+				</p:column>
+				
+				<p:column headerText="Numero de convidados:">
+					<h:outputText value="#{casamento.numeroDeConvidados}" />
+				</p:column>
+				
+				<p:column headerText="Tipo de contratação:">
+					<h:outputText value="#{casamento.tipoDeContratacao}" />
+				</p:column>
+				
+				<p:column headerText="Valor contratado:">
+					<h:outputText value="#{casamento.valorContratado}" />
+				</p:column>
+				
+				<p:column headerText="Valor pago:">
+					<h:outputText value="#{casamento.valorPago}" />
+				</p:column>
+				
+				<p:column headerText="Ações">
+					<p:commandButton value="Excluir" action="#{cadastroCasamentoBean.excluirCasamento(casamento)}" update="@form" immediate="true"/>
+				</p:column>
+				
+			</p:dataTable>
+		
+		
+		</ui:define>
+	
+	</ui:composition>
+</html>

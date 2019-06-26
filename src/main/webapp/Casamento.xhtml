@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+	<ui:define name="tituloPrincipal">Casamento	</ui:define>
+	<ui:define name="tituloSecundario">Registre o seu Casamento.</ui:define>
+	<ui:define name="botoesAcao">
+		<p:commandButton value="Salvar" action="#{cadastroCasamentoBean.cadastrarCasamento()}" update="@form" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<p:panelGrid columns="3">
+			<p:outputLabel for="n1" value="Noivos:"/>
+			<p:inputText id="n1" value="#{cadastroCasamentoBean.casamento.noivos}" />
+			<p:message for="n1"/>
+			
+			<p:outputLabel for="n2" value="Local do evento:"/>
+			<p:inputText id="n2" value="#{cadastroCasamentoBean.casamento.localDoEvento}" />
+			<p:message for="n2"/>
+			
+			<p:outputLabel for="n3" value="Local da cerimonia:"/>
+			<p:inputText id="n3" value="#{cadastroCasamentoBean.casamento.localDaCerimonia}" />
+			<p:message for="n3"/>
+			
+			<p:outputLabel for="n4" value="Data e Hora:"/>
+			<p:calendar locale="pt" pattern="dd/MM/yyyy HH:mm" id="n4" value="#{cadastroCasamentoBean.casamento.data}" />
+			<p:message for="n4"/>
+			
+			<p:outputLabel for="n5" value="Telefone:"/>
+			<p:inputMask mask="(99)99999-9999"  id="n5" value="#{cadastroCasamentoBean.casamento.telefone}" />
+			<p:message for="n5"/>
+			
+			<p:outputLabel for="n6" value="Numero de convidados:"/>
+			<p:inputMask mask="999" id="n6" value="#{cadastroCasamentoBean.casamento.numeroDeConvidados}" />
+			<p:message for="n6"/>
+			
+			<p:outputLabel for="n7" value="Tipo contratação: " />
+			<p:selectOneMenu id="n7" value="#{cadastroCasamentoBean.casamento.tipoDeContratacao}">
+				<f:selectItem itemLabel="--Selecione--" noSelectionOption="true"/>
+				<f:selectItem itemLabel="Acessoria" itemValue="Acessoria"/>
+				<f:selectItem itemLabel="Cerimonialista" itemValue="Cerimonialista"/>
+				<f:selectItem itemLabel="Organização do evento" itemValue="Organização do evento"/>
+			</p:selectOneMenu>
+			<p:message for="n7"/>
+			
+			<p:outputLabel for="n8" value="Valor Contratado:"/>
+			<p:inputNumber thousandSeparator="." decimalSeparator="," decimalPlaces="2" id="n8" value="#{cadastroCasamentoBean.casamento.valorContratado}"/>
+			<p:message for="n8" />
+			
+			<p:outputLabel for="n9" value="Valor Pago:"/>
+			<p:selectOneRadio id="n9" value="#{cadastroCasamentoBean.casamento.valorPago}">
+				<f:selectItem itemLabel="Sim" itemValue="Sim"/>
+				<f:selectItem itemLabel="Não" itemValue="Não"/>
+			</p:selectOneRadio> 
+			<p:message for="n9"/>
+			
+			
+		</p:panelGrid>
+	
+	</ui:define>
+	
+	</ui:composition>
+</html>
